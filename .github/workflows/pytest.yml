@@ -6,7 +6,7 @@ on:
 
 jobs:
   test:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     strategy:
       fail-fast: false
       matrix:
@@ -33,7 +33,7 @@ jobs:
   # can pass tests and still fail every real `pip install` from source.
   # This job builds the actual wheel and installs it into a clean venv.
   wheel-gate:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - name: Checkout
         uses: actions/checkout@v4

@@ -29,7 +29,7 @@ Repo: github.com/Panniantong/Agent-Reach | License: MIT | Version: 1.5.0
 ## Conventions
 - Python 3.10+ with type hints
 - Each channel is a single file in `channels/`, inherits from `BaseChannel`
-- Channel contract: must implement `can_handle(url)`, `read(url)`, `search(query)`, `check()` methods
+- Channel contract: must implement `can_handle(url)`; override `check(config)` when the channel has an external backend. `read(url)`/`search(query)` are not part of the base contract — only `web.py` and `v2ex.py` define them
 - Use `loguru` for logging, `rich` for CLI output
 - Commit format: `type(scope): message` (one commit = one thing)
 - All upstream tool calls go through public API/CLI, never hack internals
