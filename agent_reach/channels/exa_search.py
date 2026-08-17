@@ -11,7 +11,11 @@ class ExaSearchChannel(Channel):
     name = "exa_search"
     description = "全网语义搜索"
     backends = ["Exa via mcporter"]
-    tier = 0
+    # Not zero-config: needs `npm install -g mcporter` plus an explicit
+    # `mcporter config add exa`. check() also never returns "ok" by design —
+    # Doctor won't claim availability without a connectivity probe it refuses
+    # to run — so a tier-0 listing could only ever render as not-ready.
+    tier = 2
 
     def can_handle(self, url: str) -> bool:
         return False  # Search-only channel
